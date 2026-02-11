@@ -7,13 +7,13 @@
   <style>
     body {
       margin: 0;
-      background-color: #000; /* Black background */
+      background-color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       font-family: Arial, sans-serif;
-      color: #ff69b4; /* Pink text */
+      color: #ff69b4;
       flex-direction: column;
     }
 
@@ -27,10 +27,10 @@
       width: 80%;
       max-width: 600px;
       height: 400px;
-      border: 2px solid #ff69b4; /* Pink border */
+      border: 2px solid #ff69b4;
       border-radius: 10px;
       box-shadow: 0 0 20px #ff69b4;
-      touch-action: pan-y; /* Fixes mobile rotation */
+      touch-action: auto;
     }
 
     p {
@@ -50,13 +50,27 @@
   <h1>My 3D Model</h1>
 
   <model-viewer 
+      id="viewer"
       src="olivia.glb" 
       alt="Olivia 3D Model" 
       auto-rotate 
       camera-controls 
-      background-color="#000000">
+      background-color="#000000"
+      ar
+      loading="lazy">
   </model-viewer>
 
   <p>Use your mouse or touch to rotate and zoom the model.</p>
+
+  <script>
+    const viewer = document.getElementById('viewer');
+
+    // Wait until model is loaded
+    viewer.addEventListener('load', () => {
+      viewer.cameraOrbit = '0deg 75deg 2.5m'; // Initial camera angle
+      viewer.cameraTarget = '0m 0m 0m';
+      viewer.jumpCameraToGoal();
+    });
+  </script>
 </body>
 </html>
