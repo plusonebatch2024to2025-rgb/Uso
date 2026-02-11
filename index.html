@@ -24,11 +24,25 @@
     }
 
     model-viewer {
-      width: 600px;
+      width: 80%;
+      max-width: 600px;
       height: 400px;
       border: 2px solid #ff69b4; /* Pink border */
       border-radius: 10px;
       box-shadow: 0 0 20px #ff69b4;
+      touch-action: pan-y; /* Fixes mobile rotation */
+    }
+
+    p {
+      margin-top: 15px;
+      color: #ff69b4;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      model-viewer {
+        height: 300px;
+      }
     }
   </style>
 </head>
@@ -36,13 +50,13 @@
   <h1>My 3D Model</h1>
 
   <model-viewer 
-      src="olivia.glb"  <!-- Your GLB file -->
-      alt="Olivia 3D Model"
-      auto-rotate
-      camera-controls
+      src="olivia.glb" 
+      alt="Olivia 3D Model" 
+      auto-rotate 
+      camera-controls 
       background-color="#000000">
   </model-viewer>
 
-  <p>Use your mouse or touch to rotate/zoom the model.</p>
+  <p>Use your mouse or touch to rotate and zoom the model.</p>
 </body>
 </html>
